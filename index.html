@@ -13,33 +13,38 @@
 </head>
 <body>
     <!-- start project -->
-   <div class="container bg-success col-10 mt-1 d-flex flex-wrap flex-column justify-content-center align-content-center p-2">
+   <div class="bg-dark col-12  d-flex flex-wrap flex-column justify-content-center align-content-center p-4">
         <!-- header -->
         <div class="header bg-white rounded-4 col-12 d-flex flex-row flex-nowrap justify-content-between p-2 align-item-center"> 
-            <h3 class="mt-2 text-success">Movie List</h3>
+            <h3 class="mt-2 text-dark">Movie List</h3>
             <img src="./images/pngtree-film-logo-design-template-vector-isolated-illustration-png-image_1693431.jpg" alt="logo" class="logo rounded-circle" width="50px">
         </div>
         <!-- add movie section -->
-         <div class="add mt-4 d-flex flex-row flex-nowrap col-10 offset-1 justify-content-center align-content-center">
-            <input type="text" name="move" id="addMovie" class="col-7 mx-4">
-            <button id="addBtn" type="button" class="btn btn-sm btn-light text-success">ADD</button>
+         <div class="add mt-4 d-flex flex-row flex-nowrap col-10 offset-1 justify-content-center align-content-center ">
+            <input type="text" name="move" id="addMovie" class="col-5 mx-4">
+            <button id="addBtn" type="button" class="">ADD</button>
          </div>
          <!-- section movie list and filter movie -->
-          <div class="secondPart d-flex flex-row flex-nowrap bg-success p-2 col-12 mt-3 ">
+         <div class="secondPart position-relative d-flex flex-row flex-nowrap bg-dark p-2 col-12 mt-3">
             <!-- movie list -->
-            <div  class="col-6 p-2">
+            <div id="listM"  class=" col-6 p-2">
                 <h4 class="tilte" >Movies :</h4>
-                <ul id="movieList" class="col-12 ">
-                    
-                    <li class="list-group">kdjcskdjdk</li>
+                <ul id="movieList" class="col-12 ">                    
                 </ul>
+                
             </div>
-            <!-- filter part -->
-            <div id="filteMovies" class="d-flex flex-column  flex-wrap col-6  justify-content-center align-content-center">
-            <input type="text" name="filter" id="filterMovie" class=" col-7 mx-4 mb-3">
-            <button type="button" class="btn btn-sm btn-light text-success col-1 offset-4">Filter</button>
+            <div id="removalPart" class="p-2 col-6 d-none">
+                <h1 class="text-light">hello-world</h1>
+            </div>
+           
+            <!-- options part -->
+            <div id="options" class="d-flex flex-column  flex-wrap col-6  justify-content-center align-content-center">
+                <button class="btn filter-btn">FILTER</button>
+                <button class="btn removal-btn" id="removalBtn" >REMOVAL LIST</button>
+                <button class="btn movies-btn d-none" id="moviesBtn" >MOVIE LIST</button>
+
+            </div>
          </div>
-          </div>
 
    </div>
 </body>

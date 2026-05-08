@@ -1,25 +1,70 @@
 input#addMovie{
     border: none;
     background-color: transparent;
-    border-bottom: 1px solid whitesmoke;
+    border-bottom: 1px solid #abd1b5;
     transition: all 300ms linear;
 }
 input#addMovie:focus{
     outline: none;
     color: whitesmoke;
-    border-bottom: 2px solid whitesmoke ;
+    border-bottom: 2px solid #abd1b5 ;
+}
+button#addBtn{
+    background-color: #abd1b5;
+    color: #415C42;
+    width: 9%;
+    border-radius: 4px;
+    border: 1px solid #abd1b5;
 }
 h4.tilte{
     color: #abd1b5;
 }
-#filterMovie{
+div#listM{
+    border:1px solid #abd1b5;
+    margin-right: 4px;
+    border-radius: 4px;
+}
+div#removalPart{
+    border:1px solid #abd1b5;
+    margin-right: 4px;
+    border-radius: 4px;
+}
+/* #filterMovie{
     border: none;
     background-color: transparent;
     border-bottom: 1px solid whitesmoke;
     transition: all 300ms linear;
-}
-input#filterMovie:focus{
+} */
+/* input#filterMovie:focus{
     outline: none;
     color: whitesmoke;
     border-bottom: 2px solid whitesmoke ;
+} */
+div#options{
+    background: url(./images/paul-blenkhorn-gkKI23ZeaHM-unsplash.jpg) center center no-repeat;
+    background-size: cover;
+    border-radius: 4px;
+    min-height: 90vh;
+}
+div#options>button.filter-btn{
+    border: 1px solid #abd1b5;
+    background-color: #abd1b5;
+    color: #415C42;
+    margin-bottom: 4px;
+    width: 40%;
+}
+div#options>button.removal-btn{
+    border: 1px solid #415C42;
+    background-color: #415C42;
+    color:#abd1b5 ;
+    margin-top: 4px;
+    width: 40%;
+
+}
+div#options>button.movies-btn{
+    border: 1px solid #415C42!important;
+    background-color: #415C42;
+    color:#abd1b5 ;
+    margin-top: 4px;
+    width: 40%;  
 }
