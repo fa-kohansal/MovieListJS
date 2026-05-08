@@ -4,8 +4,10 @@ window.onload=()=>{
     const moviesBtn = document.getElementById("moviesBtn");
     const showMovies = document.getElementById("listM");
     const deletedList = document.getElementById("removalPart");
+    const deletedMovies = document.getElementById("deletedMovies");
     let addMovieBtn= document.getElementById("addBtn");
     let removalBtn = document.getElementById("removalBtn");
+
     const renderMovies = () => {
       movieListE1.innerHTML = movieList.map((elem, index) => {
         if(movieList[index].delete===false){
@@ -45,28 +47,28 @@ window.onload=()=>{
         }
       renderMovies();
 
-    })
+    });
     removalBtn.addEventListener("click",()=>{
         showMovies.classList.add("d-none");
         deletedList.classList.remove("d-none")
         removalBtn.classList.add("d-none");
         moviesBtn.classList.remove("d-none")
-        deletedList.innerHTML = movieList.map((elem)=>{
-            if (elem.delete=== true) {
-                return`
+        deletedMovies.innerHTML = movieList
+          .map((elem) => {
+            if (elem.delete === true) {
+              return `
                     <li class="text-light">${elem.name}</li>
-                `                
-                
+                `;
             }
-        }).join(" ")
-            
-            
-          
-    })
-
-    
-   
-    
+          })
+          .join(" ");    
+    });
+    moviesBtn.addEventListener("click",()=>{
+        showMovies.classList.remove("d-none");
+        deletedList.classList.add("d-none");
+        removalBtn.classList.remove("d-none");
+        moviesBtn.classList.add("d-none");
+    });
     renderMovies()
 }
 
