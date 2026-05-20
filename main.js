@@ -16,8 +16,9 @@ window.onload = () => {
   const deletedCount = document.getElementById("deletedCount");
   const searchInput = document.getElementById("searchMovie");
   searchInput.addEventListener("input", () => {
+    const value= searchInput.value.toLowerCase();
     const filteredMovies = movieList.filter((movie) => {
-      return movie.name.includes(searchInput.value);
+      return movie.name.includes(value);
     });
     renderMovies(value ? filteredMovies: movieList);
   });
