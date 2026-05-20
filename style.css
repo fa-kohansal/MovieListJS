@@ -1,76 +1,270 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100%;
+    background: url(./images/paul-blenkhorn-gkKI23ZeaHM-unsplash.jpg) center center no-repeat;
+    background-size: cover;
+    
+}
+body::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45 );
+    backdrop-filter: blur(2px);
+}
+div.header{
+    background-color: #212529e1;
+    border: 0.5px solid #abd1b5;
+    box-shadow: 0.5px 0.5px 0.5px #abd1b5;
+    height: 70px;
+    position: relative;
+    z-index: 10000;
+}
 .headerTitle{
-    color: #415C42;
+    color:#fff;
+    padding: 4px 0 0 16px;
+    box-sizing: border-box;
+    height: 50%;
+}
+.headerTitle>i{
+    color: #abd1b5;
+}
+div.header>div>p{
+    padding: 0 16px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #abd1b5;
+}
+div.add{
+    border: 0.5px solid #ffffff46;
+    /* height: 70px; */
+    font-size: 14px;
+
 }
 input#addMovie{
-    border: none;
+    /* border: none; */
+    border: 0.5px solid #415C42;
+
     background-color: transparent;
-    border-bottom: 1px solid #abd1b5;
+    /* border-bottom: 1px solid #abd1b5; */
     transition: all 300ms linear;
-    height: 24px;
+    height: 30px;
+    
 }
 input#addMovie:focus{
     outline: none;
     color: whitesmoke;
-    border-bottom: 2px solid #abd1b5 ;
+    border: 0.5px solid #abd1b5;
+    font-size: 14px;
+    background-color: transparent;
+
 }
 button#addBtn{
     background-color: #abd1b5;
     color: #415C42;
     width: 9%;
+    margin-top: 3px;
+    margin-left: 8px;
+    height: 90%;
     border-radius: 4px;
     border: 1px solid #abd1b5;
+    font-size: 14px;
+    transition: all 300ms linear;
 }
-h4.tilte{
+button#addBtn:hover{
+    background-color: #415C42;
+    color: #abd1b5;  
+    border: 1px solid #415C42;
+
+}
+h5.tilte{
     color: #abd1b5;
 }
+.dropdown-menu{
+    border: 0.5px solid #abd1b5 !important;
+}
+
 div#listM{
     border:1px solid #abd1b5;
     margin-right: 4px;
     border-radius: 4px;
+}
+.listStyle{
+    border-radius: 4px;
+    border: 0.5px solid #abd1b5;
+    margin-bottom: 10px;
 }
 div#removalPart{
     border:1px solid #abd1b5;
     margin-right: 4px;
     border-radius: 4px;
 }
-div#removalPart>h4{
+div#removalPart>div>h4{
     color: #abd1b5;
+    /* margin-top: 10px; */
+    padding-top: 5px;
+    margin-left: 8px;
     text-transform: capitalize;
 }
-/* #filterMovie{
-    border: none;
-    background-color: transparent;
-    border-bottom: 1px solid whitesmoke;
-    transition: all 300ms linear;
-} */
-/* input#filterMovie:focus{
-    outline: none;
-    color: whitesmoke;
-    border-bottom: 2px solid whitesmoke ;
-} */
-div#options{
-    background: url(./images/paul-blenkhorn-gkKI23ZeaHM-unsplash.jpg) center center no-repeat;
-    background-size: cover;
+div#removalPart>div>button{
+    width: 30px;
+    height: 30px;
+    /* text-align: center; */
+}
+div#removalPart>div>button:hover{
+    color: #abd1b5 !important;
+}
+div#movieDetils{
+    /* background-color:#abd1b5 ; */
+    border: 0.5px solid #abd1b5;
+
     border-radius: 4px;
-    min-height: 90vh;
+    padding: 10px;
+    height:70vh;
+}
+div#movieDetils>.headerDetail{
+    color: #abd1b5;
 }
 button.filter-btn{
-    border:none;
-    color: #415C42;
-    margin: 4px 0;
-    font-size: 20px;
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    width: 35px;
+    margin-top: 15px;
+    margin-right: 12px;
+    height: 35px;
+    text-align: center;
+    background-color: #292e33;
 
+    /* border: none; */
+    color:#abd1b5 ;
+    /* margin-top: 2px; */
+    font-size: 20px;
+    border: 0.5px solid #ffffff46;
+}
+button.filter-btn:hover{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    width: 35px;
+    margin-top: 15px;
+    margin-right: 12px;
+    height: 35px;
+    text-align: center;
+    background-color: #292e33;
+
+    /* border: none; */
+    color:#abd1b5 ;
+    /* margin-top: 2px; */
+    font-size: 20px;
+    border: 0.5px solid #abd1b5;    
 }
 button.removal-btn{
-    border: none;
-    color:#abd1b5 ;
-    margin-top: 2px;
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    width: 35px;
+    margin-top: 15px;
+    margin-right: 12px;
+    height: 35px;
+    text-align: center;
+    background-color: #292e33;
+
+    /* border: none; */
+    color:#c83a3a ;
+    /* margin-top: 2px; */
     font-size: 20px;
+    border: 0.5px solid #ffffff46;
 
 }
-div#options>button.movies-btn{
+button.removal-btn:hover{
+      display:flex;
+    justify-content: center;
+    align-content: center;
+    width: 35px;
+    margin-top: 15px;
+    margin-right: 12px;
+    height: 35px;
+    text-align: center;
+    background-color: #292e33;
+
+    /* border: none; */
+    color:#c83a3a ;
+    /* margin-top: 2px; */
+    font-size: 20px;
+    border: 0.5px solid #c83a3a;
+  
+}
+button.movies-btn{
     border: 1px solid #415C42!important;
     background-color: #415C42;
     color:#abd1b5 ;
     margin-top: 4px;
+}
+.seenIcon{
+    color: #415C42;
+}
+.watched{
+    border-left:10px solid #abd1b5 ;
+}
+.plus-btn{
+    color: #8ea08e;
+    cursor: pointer;
+}
+.watchedIcon{
+    color: #abd1b5;
+}
+button.delete-btn{
+    color: #8ea08e;
+    transition: all 300ms linear;
+}
+button.delete-btn:hover{
+    color: #c83a3a;
+    font-size: 18px;
+
+}
+button.fave-btn{
+    color: #8ea08e;
+    transition: all 300ms linear;
+}
+button.fave-btn:hover{
+    color: #8ea08e;
+    font-size: 18px;
+}
+.movieCard{
+    border: 0.5px solid #8ea08e;
+    background-color: #8ea08e;
+}
+
+div.movieCard>p>i{
+    color: #415C42;
+}
+div.movieCard>p.counter{
+    color: #415C42;
+}
+div.movieCard:nth-of-type(6){
+    cursor: pointer;
+}
+input.search{
+    border: 0.5px solid #415C42;
+    background-color: transparent;
+    transition: all 300ms linear;
+    height: 30px;
+}
+input.search:focus{
+    outline: none;
+    color: whitesmoke;
+    border: 0.5px solid #abd1b5;
+    font-size: 14px;
+    background-color: transparent;
+
+}
+.dropdown-toggle:hover{
+    background-color: transparent !important;
+    border: none !important;
 }

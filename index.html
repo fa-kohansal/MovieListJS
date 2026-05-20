@@ -9,54 +9,88 @@
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <!-- bootstrap icons -->
      <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <!-- link animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <title>MovieList</title>
 </head>
 <body>
     <!-- start project -->
-   <div class="bg-dark col-12  d-flex flex-wrap flex-column justify-content-center align-content-center p-4">
+   <div class="col-12  d-flex flex-wrap flex-column justify-content-center align-content-center p-4">
         <!-- header -->
-        <div class="header bg-white rounded-4 col-12 d-flex flex-row flex-nowrap justify-content-between p-2 align-item-center"> 
-            
-            <h3 class="mt-2 headerTitle"><i class="bi bi-film"></i> Movie Tracker</h3>
-            <!-- <img src="./images/pngtree-film-logo-design-template-vector-isolated-illustration-png-image_1693431.jpg" alt="logo" class="logo rounded-circle" width="50px"> -->
-             <div class="d-flex flex-row flex-nowrap justify-content-right">
-                <button class="btn filter-btn bi bi-funnel-fill"></button>
-                <button class="btn removal-btn  bi bi-trash-fill" id="removalBtn" ></button>
-
-             </div>
-        </div>
-        <!-- add movie section -->
-         <div class="add mt-4 d-flex flex-row flex-nowrap col-10 offset-1 justify-content-center align-content-center ">
-            <input type="text" name="move" id="addMovie" class="col-5 mt-1 ">
-            <button id="addBtn" type="button" class="">ADD</button>
-         </div>
-         <!-- section movie list and filter movie -->
-         <div class="secondPart position-relative d-flex flex-row flex-nowrap bg-dark p-2 col-12 mt-3">
-            <!-- movie list -->
-            <div id="listM"  class=" col-6 p-2">
-                <h4 class="tilte" >Movies :</h4>
-                <ul id="movieList" class="col-12 ">                    
-                </ul>
-                
+        <div class="header rounded-3 col-12 d-flex flex-row flex-nowrap justify-content-between align-items-center"> 
+            <div class="d-flex  flex-column ">
+                <h4 class="headerTitle mb-0"><i class="bi bi-film"></i> Movie Tracker</h4>
+                <p class="mt-0">Track. Watch. Remember.</p>
             </div>
-            <div id="removalPart" class="p-2 col-6 d-none ">
-                <h4 class="title">deleted movies:</h4>
+           
+        </div>
+        
+         <!-- section movie list and filter movie -->
+         <div class="secondPart position-relative d-flex flex-row flex-nowrap  p-2 col-12 mt-3">
+            <!-- movie list -->
+            <div id="listM"  class="d-flex bg-dark flex-column col-6 ">
+                <!-- add movie section -->
+
+                <div class="d-flex flex-column p-3">
+                    <div class="d-flex flex-row flex-nowrap">
+                        <h5 class="tilte col-7" >Movies :</h5>
+                        <input type="text" name="search" id="searchMovie" placeholder="search movie" class="search p-1 rounded-1 col-3">
+                        <div class="dropdown col-2">
+                            <button class="btn btn-dark  dropdown-toggle text-sm" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">sort by</button>
+                            <div class="listStyle dropdown-menu dropdown-menu-dark bg-dark " aria-labelledby="dropdownMenu2">
+                                <button class="dropdown-item text-light" type="button" data-sort="last">last added</button>
+                                <button class="dropdown-item text-light" type="button" data-sort="most">most view</button>
+                                <button class="dropdown-item text-light" type="button" data-sort="less">less view</button>
+                            </div>
+                        </div>
+                    </div>
+                <ul id="movieList" class="col-12 p-0">   
+
+                </ul>
+                </div>
+            </div>
+            <div id="removalPart" class="p-2 col-6 d-none bg-dark ">
+                <div class="d-flex flex-row flex-nowrap">
+                    <button class="btn movies-btn d-flex justify-content-center align-items-center bi bi-caret-left-fill" id="moviesBtn" ></button>
+                    <h4 class="title">recently delete:</h4>
+                </div>
+
                 <div id="deletedMovies" ></div>
             </div>
            
             <!-- options part -->
-            <div id="options" class="d-flex flex-column  flex-wrap col-6  justify-content-center align-content-center">
-                <div class="filters">
-                    
+            <div id="movieDetils" class="d-flex flex-row justify-content-center align-content-start bg-dark flex-wrap col-6">
+                <div class="headerDetail col-12">
+                    <h4 class="text-capitalize">movie details :</h4>
                 </div>
-                <button class="btn movies-btn d-none" id="moviesBtn" >MOVIE LIST</button>
+                <div class="add mt-2 mb-5 p-3 mx-auto d-flex flex-row flex-nowrap col-11  justify-content-center rounded-3  ">
+                    <input type="text" name="move" id="addMovie" class="col-10 rounded-3 mt-1 p-1 "placeholder="add movie...">
+                    <button id="addBtn" type="button" class="" >ADD</button>
+                </div>
+                <div class="movieCard  col-4  my-3  p-3 rounded-1">
+                    <p class="text-center pb-2 border-bottom text-light text-capitalize"><i class="bi bi-camera-reels-fill mx-1"></i> movies </p>
+                    <p class="text-center counter"  id="countMovies">  </p>
+                </div>
 
+                <div class="movieCard col-4 offset-1 p-3 my-3 rounded-1 ">
+                    <p class="text-center pb-2 border-bottom text-light text-capitalize"><i class="bi bi-eye-fill mx-1"></i> views</p>
+                    <p class="text-center counter"id="totalView" >  </p>
+                </div>
+                <div class="movieCard col-4  p-3 my-3 rounded-1">
+                    <p class="text-center text-light pb-2 border-bottom text-capitalize"><i class="bi bi-heart-fill mx-1"></i> favorites </p>
+                    <p class="text-center counter" id="favoriteCount">  </p>
+                </div>
+                <div class="movieCard col-4 offset-1 p-3 my-3 rounded-1" id="removalBtn">
+                    <p class="text-center pb-2 border-bottom text-capitalize text-light"><i class="bi bi-trash-fill mx-1"></i> deleted </p>
+                    <p class="text-center counter" id="deletedCount" >  </p>
+                </div>
             </div>
          </div>
 
    </div>
 </body>
 
-<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="./main.js"></script>
+
 </html>
