@@ -118,6 +118,21 @@ window.onload = () => {
   // SORT
   // ----------------------------
 
+  document.querySelectorAll('[data-sort]').forEach(btn =>{
+    btn.addEventListener('click',()=>{
+      const sortType = btn.dataset.sort;
+      let sorted = [...movieList];
+      if(sortType === 'last'){
+        sorted.sort((a,b)=> b.id -a.id);
+      }if(sortType === 'most'){
+        sorted.sort((a,b)=> b.view - a.view);
+      }else if( sortType === 'less'){
+        sorted.sort((a,b)=> a.view-b.view);
+      }
+      renderMovies(sorted)
+    })
+  })
+
   removalBtn.addEventListener("click", () => {
     movieDetail.classList.add("d-none");
     movieDetail.classList.remove("d-flex");
