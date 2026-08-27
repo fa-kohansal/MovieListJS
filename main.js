@@ -1,6 +1,21 @@
-const movieList = [];
+const saveMovies = () =>{
+  localStorage.setItem('movieList', JSON.stringify(movieList))
+}
+let movieList = JSON.parse(localStorage.getItem('movieList')) || [];
 
 window.onload = () => {
+  const API_KEY = "abf57793";
+  const fetchMovieData = async (movieName) => {
+     try { 
+      const res = await fetch( `https://www.omdbapi.com/?apikey=${API_KEY}&t=${encodeURIComponent(movieName)}` );
+      const data = await res.json();
+      if (data.Response === "False") {
+        alert("oh-oh no movies 🙁 ");
+        return null; }
+      return data; }catch (error) {
+        console.log("error"); return null; 
+      }
+   };
   //-------------------------
   // DOM
   //-------------------------
@@ -65,18 +80,23 @@ window.onload = () => {
   // ADD MOVIES
   //----------------------------
 
-  addMovieBtn.addEventListener("click", () => {
+  addMovieBtn.addEventListener("click",async () => {
     const movieName = addMovieInput.value.trim();
     if (!movieName) return;
-
+    const movieData= await fetchMovieData(movieName);
+    if(!movieData) return;
     movieList.push({
       id: Date.now(),
-      name: movieName,
+      name: movieData.Title,
+      poster:movieData.Poster,
+      year:movieData.Year,
+      rating:movieData.imdbRating,
       view: 0,
       favorite: false,
       deleted: false,
     });
     addMovieInput.value = "";
+    saveMovies();
     renderMovies();
   });
 
@@ -89,6 +109,7 @@ window.onload = () => {
     const filteredMovie = movieList.filter((movie) =>
       movie.name.toLowerCase().includes(value),
     );
+    saveMovies();
     renderMovies(value ? filteredMovie : movieList);
   });
 
@@ -111,6 +132,7 @@ window.onload = () => {
     if (e.target.classList.contains("delete-btn")) {
       movie.deleted = !movie.deleted;
     }
+    saveMovies();
     renderMovies();
   });
 
@@ -129,6 +151,7 @@ window.onload = () => {
       }else if( sortType === 'less'){
         sorted.sort((a,b)=> a.view-b.view);
       }
+      saveMovies();
       renderMovies(sorted)
     })
   })
@@ -159,4 +182,6 @@ window.onload = () => {
     moviesBtn.classList.add("d-none");
   });
   
+
+  renderMovies()
 }
