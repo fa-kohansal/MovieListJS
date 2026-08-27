@@ -85,7 +85,7 @@ window.onload = () => {
   // -----------------------------
 
   searchInput.addEventListener("input", () => {
-    const value = searchInput.value.toLoweCase();
+    const value = searchInput.value.toLowerCase();
     const filteredMovie = movieList.filter((movie) =>
       movie.name.toLowerCase().includes(value),
     );
