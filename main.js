@@ -4,6 +4,7 @@ window.onload = () => {
   //-------------------------
   // DOM
   //-------------------------
+  
   const movieListE1 = document.getElementById("movieList");
   const moviesBtn = document.getElementById("moviesBtn");
   // const showMovies = document.getElementById("listM");
