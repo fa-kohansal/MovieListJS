@@ -63,9 +63,10 @@ window.onload = () => {
       .map((elem) => {
         return `
             <li data-id="${elem.id}" class="animate__animated animate__fadeIn list-group ${elem.view > 0 ? "watched " : ""} ${elem.favorite ? "border-danger" : " "} listStyle mb-1 d-flex flex-row flex-nowrap col-12">
+              <img src="${elem.poster !== "N/>A" ? elem.poster : "https://via.placeholder.com/40x60?text=No+Image"}" alt="${elem.name}" style="width:30px; height:50px; object-fit:cover; margin:8px"/>
                 <button class="fave-btn btn btn-sm ${elem.favorite ? "text-danger" : "movieActions"} mb-1 col-1 bi bi-heart-fill"></button>
                 
-                <p class="col-9 mt-2 text-light  text-capitalize">${elem.name}</p> 
+                <p class="col-6 mt-2 text-light  text-capitalize">${elem.name} (${elem.year})</p> 
                 <p class="plus-btn pointer-event col-1 text-center mt-2 bg ${elem.view > 0 ? "watchedIcon" : "movieActions"}"><i class="plus-btn bi bi-eye"></i> ${elem.view}</p>
                 
                 <button class="delete-btn mb-1 btn btn-sm bi bi-trash-fill col-1"></button> 
@@ -85,7 +86,7 @@ window.onload = () => {
     if (!movieName) return;
     const movieData= await fetchMovieData(movieName);
     if(!movieData) return;
-    movieList.push({
+    movieList.unshift({
       id: Date.now(),
       name: movieData.Title,
       poster:movieData.Poster,
@@ -144,7 +145,10 @@ window.onload = () => {
     btn.addEventListener('click',()=>{
       const sortType = btn.dataset.sort;
       let sorted = [...movieList];
-      if(sortType === 'last'){
+      if(sortType==="default"){
+        renderMovies()
+        return;
+      }else if(sortType === 'last'){
         sorted.sort((a,b)=> b.id -a.id);
       }if(sortType === 'most'){
         sorted.sort((a,b)=> b.view - a.view);
@@ -161,15 +165,25 @@ window.onload = () => {
     movieDetail.classList.remove("d-flex");
     deletedList.classList.remove("d-none");
     moviesBtn.classList.remove("d-none");
+    renderDeletedMovies();
+  });
+  const renderDeletedMovies = ()=>{
     deletedMovies.innerHTML = movieList
       .filter((movie) => movie.deleted)
       .map((elem) => {
-        if (elem.deleted === true) {
-          return `<li class="text-light">${elem.name}</li>`;
-        }
+        
+          return `
+            <li class="text-light listStyle mb-1 d-flex flex-row flex-nowrap col-12 align-items-center p-2" id="${elem.id}">
+              <p class="col-9 mt-2 text-light text-capitalize mb-8"> ${elem.name}</p>
+              <button class="restore-btn btn btn-sm bi bi-arrow-counterclockwise col-2 text-light"></button>
+            </li>
+            
+            
+            `;
+        
       })
       .join(" ");
-  });
+  }
 
   // --------------------------
   // BACK TO MOVIES
