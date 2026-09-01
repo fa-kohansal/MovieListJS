@@ -173,7 +173,8 @@ window.onload = () => {
       .map((elem) => {
         
           return `
-            <li class="text-light listStyle mb-1 d-flex flex-row flex-nowrap col-12 align-items-center p-2" id="${elem.id}">
+            <li class="text-light listStyle mb-1 d-flex flex-row flex-nowrap col-12 align-items-center p-2" data-id="${elem.id}">
+              <img src="${elem.poster !== "N/>A" ? elem.poster : "https://via.placeholder.com/40x60?text=No+Image"}" alt="${elem.name}" style="width:30px; height:50px; object-fit:cover; margin:8px"/>
               <p class="col-9 mt-2 text-light text-capitalize mb-8"> ${elem.name}</p>
               <button class="restore-btn btn btn-sm bi bi-arrow-counterclockwise col-2 text-light"></button>
             </li>
@@ -184,7 +185,27 @@ window.onload = () => {
       })
       .join(" ");
   }
+  deletedMovies.addEventListener("click",(e)=>{
+    console.log("click", e.target, e.target.classList.toString());
+    
+    const li = e.target.closest("li");
+    if(!li) return;
+    const id = Number(li.dataset.id);
+    const movie = movieList.find((m)=> m.id === id);
+    console.log(movie);
+    
+    if (!movie) return;
+    console.log("film is found" , movie);
+    
+    if (e.target.classList.contains("restore-btn")) {
+      console.log("ok");
 
+      movie.deleted = false;
+      saveMovies();
+      renderDeletedMovies();
+      renderMovies();
+    }
+  });
   // --------------------------
   // BACK TO MOVIES
   // --------------------------
